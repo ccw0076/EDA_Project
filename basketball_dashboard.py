@@ -39,7 +39,7 @@ with tab1:
     st.write(f"**Total Records:** {len(df_all)}")
     st.write(f"**Seasons Covered:** 2010-2025")
     st.write(f"**Number of Teams:** {df_all['School'].nunique()}")
-    st.dataframe(df_all.head(10))
+    st.dataframe(df_all)
 
 # ===== TAB 2: Q1 - CORRELATIONS WITH WIN PERCENTAGE =====
 with tab2:
@@ -51,7 +51,7 @@ with tab2:
         correlation_data = df_all[numeric_cols].corrwith(df_all["W-L%"]).sort_values()
         
         # Remove W-L%, W, and L from the chart
-        correlation_data = correlation_data.drop(["W-L%", "W", "L"], errors='ignore')
+        correlation_data = correlation_data.drop(["W-L%", "W", "L", "NET", "NET_z"], errors='ignore')
         
         # Create correlation chart
         fig_corr = go.Figure(data=[
@@ -224,13 +224,23 @@ with tab7:
         scatter_stat = st.selectbox("Select Statistic for Scatterplot", 
                                    ["SRS", "SOS", "PPG", "OPPG", "FG%", "3P%", "FT%"],
                                    key="scatter_stat")
-        
-        if scatter_stat in power5_df.columns:
-            fig_scatter = px.scatter(power5_df, x=scatter_stat, y="W-L%",
-                                   color="Conference",
-                                   title=f"{scatter_stat} vs Win Percentage by Conference",
-                                   trendline="ols",
-                                   opacity=0.6)
+
+        # Add season selector to filter scatterplots (allow All seasons)
+        seasons = ["All"] + sorted(power5_df["Season"].dropna().unique())
+        season_choice = st.selectbox("Season", seasons, index=0, key="scatter_season")
+
+        # Filter dataframe for scatter plot according to season choice
+        if season_choice == "All":
+            scatter_df = power5_df
+        else:
+            scatter_df = power5_df[power5_df["Season"] == season_choice]
+
+        if scatter_stat in scatter_df.columns and len(scatter_df) > 0:
+            fig_scatter = px.scatter(scatter_df, x=scatter_stat, y="W-L%",
+                                     color="Conference",
+                                     title=f"{scatter_stat} vs Win Percentage by Conference ({season_choice})",
+                                     trendline="ols",
+                                     opacity=0.6)
             fig_scatter.update_layout(height=500)
             st.plotly_chart(fig_scatter, use_container_width=True)
 
@@ -263,14 +273,14 @@ with tab8:
     
     if len(auburn_all) > 0:
         # Show season data
-        st.subheader("Auburn Season Data (2010-2024)")
+        st.subheader("Auburn Season Data (2010-2025)")
         st.dataframe(auburn_all[["Season", "W-L%", "PPG", "OPPG", "FG%", "SRS", "BLK", "STL", "TRB", "AST", "TOV"]].sort_values("Season", ascending=False), use_container_width=True)
         
         # Auburn win percentage line chart
         st.subheader("Auburn Win Percentage Over Time")
         auburn_line = auburn_all[["Season", "W-L%"]].copy().sort_values("Season")
         fig_auburn = px.line(auburn_line, x="Season", y="W-L%",
-                           title="Auburn Win Percentage Over Time (2010-2024)",
+                           title="Auburn Win Percentage Over Time (2010-2025)",
                            markers=True)
         fig_auburn.update_layout(height=400)
         st.plotly_chart(fig_auburn, use_container_width=True)
