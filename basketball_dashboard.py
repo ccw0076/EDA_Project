@@ -258,7 +258,10 @@ with tab7:
                                      color="Conference",
                                      title=f"{scatter_stat} vs Win Percentage by Conference ({season_choice})",
                                      trendline="ols",
-                                     opacity=0.6)
+                                     opacity=0.6,
+                                     hover_name="School",
+                                     hover_data={"Season": True, "Conference": True, scatter_stat: True, "W-L%": True}
+                                     )
             fig_scatter.update_layout(height=500)
             st.plotly_chart(fig_scatter, use_container_width=True)
 
