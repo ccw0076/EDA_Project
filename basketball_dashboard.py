@@ -190,19 +190,37 @@ with tab7:
     
     # Map conferences
     conference_map = {
-        "Alabama": "SEC", "Auburn": "SEC", "Arkansas": "SEC",
-        "Florida": "SEC", "Georgia": "SEC", "Kentucky": "SEC",
-        "Louisiana State": "SEC", "Mississippi": "SEC", "Mississippi State": "SEC",
-        "Missouri": "SEC", "South Carolina": "SEC", "Tennessee": "SEC", 
-        "Texas A&M": "SEC", "Vanderbilt": "SEC", "Texas": "SEC", "Oklahoma": "SEC",
-        "Duke": "ACC", "North Carolina": "ACC", "Virginia": "ACC",
-        "Illinois": "Big 10", "Indiana": "Big 10", "Iowa": "Big 10",
-        "Michigan": "Big 10", "Michigan State": "Big 10", "Ohio State": "Big 10",
-        "Purdue": "Big 10", "Wisconsin": "Big 10",
-        "Kansas": "Big 12", "Baylor": "Big 12", "Houston": "Big 12",
-        "Iowa State": "Big 12", "TCU": "Big 12", "Texas Tech": "Big 12",
-        "Villanova": "Big East", "Connecticut": "Big East", "Xavier": "Big East",
-        "Creighton": "Big East", "Marquette": "Big East"
+    "Alabama": "SEC", "Auburn": "SEC", "Arkansas": "SEC",
+    "Florida": "SEC", "Georgia": "SEC", "Kentucky": "SEC",
+    "Louisiana State": "SEC", "Mississippi": "SEC", "Mississippi State": "SEC",
+    "Missouri": "SEC", "South Carolina": "SEC", "Tennessee": "SEC", 
+    "Texas A&M": "SEC", "Vanderbilt": "SEC", "Texas": "SEC", "Oklahoma": "SEC",
+
+    "Boston College": "ACC", "California": "ACC", "Clemson": "ACC",
+    "Duke": "ACC", "Florida State": "ACC", "Georgia Tech": "ACC",
+    "Louisville": "ACC", "North Carolina": "ACC", "Miami": "ACC",
+    "NC State": "ACC", "Pittsburgh": "ACC", "Southern Methodist": "ACC",
+    "Stanford": "ACC", "Syracuse": "ACC", "Virginia": "ACC",
+    "Virginia Tech": "ACC", "Wake Forest": "ACC",
+
+    "Illinois": "Big 10", "Indiana": "Big 10", "Iowa": "Big 10",
+    "Maryland": "Big 10", "Michigan": "Big 10", "Michigan State": "Big 10",
+    "Minnesota": "Big 10", "Nebraska": "Big 10", "Northwestern": "Big 10",
+    "Ohio State": "Big 10", "Oregon": "Big 10", "Penn State": "Big 10",
+    "Purdue": "Big 10", "Rutgers": "Big 10", "UCLA": "Big 10",
+    "Southern California": "Big 10", "Washington": "Big 10", "Wisconsin": "Big 10",
+
+    "Arizona": "Big 12", "Arizona State": "Big 12", "Baylor": "Big 12",
+    "Brigham Young": "Big 12", "Cincinnati": "Big 12", "Colorado": "Big 12",
+    "Houston": "Big 12", "Iowa State": "Big 12", "Kansas": "Big 12",
+    "Kansas State": "Big 12", "Oklahoma State": "Big 12", "TCU": "Big 12",
+    "Texas Tech": "Big 12", "UCF": "Big 12", "Utah": "Big 12",
+    "West Virginia": "Big 12",
+
+    "Seton Hall": "Big East", "Connecticut": "Big East", "Butler": "Big East",
+    "Villanova": "Big East", "Georgetown": "Big East", "Xavier": "Big East",
+    "Creighton": "Big East", "DePaul": "Big East", "St. John's": "Big East",
+    "Marquette": "Big East", "Providence": "Big East"
     }
     
     df_temp = df_all.copy()
